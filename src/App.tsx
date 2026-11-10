@@ -24,6 +24,7 @@ import {
 import { motion, useReducedMotion } from "framer-motion";
 
 const profilePhoto = new URL("../Image/profile_photo.png", import.meta.url).href;
+const aogProjectImage = new URL("../Image/AOG_PICTURE.png", import.meta.url).href;
 const contactEmail = "tsakoubise@gmail.com";
 
 const navigation = [
@@ -72,6 +73,7 @@ const projects = [
     stack: ["Electron", "Firebase Auth", "PostgreSQL", "Role-based access"],
     visual: "aog",
     icon: Layers3,
+    demoUrl: "https://aogmanager.netlify.app/",
   },
   {
     index: "02",
@@ -82,6 +84,7 @@ const projects = [
     stack: ["Python", "Google Calendar API", "OAuth 2.0"],
     visual: "api",
     icon: Braces,
+    demoUrl: null,
   },
   {
     index: "03",
@@ -92,6 +95,7 @@ const projects = [
     stack: ["Kotlin", "Android", "Admin web app", "AfriHackathon"],
     visual: "finance",
     icon: Layers3,
+    demoUrl: null,
   },
 ];
 
@@ -152,14 +156,7 @@ function ProjectVisual({ variant, Icon }: { variant: string; Icon: typeof Code2 
         <span className="visual-dots"><i /><i /><i /></span>
       </div>
       {variant === "aog" && (
-        <div className="aog-dashboard">
-          <div className="mini-sidebar"><b /><i /><i /><i /></div>
-          <div className="mini-content">
-            <span className="mini-caption">COMMUNITY OVERVIEW</span>
-            <div className="mini-stat-row"><b /><b /><b /></div>
-            <div className="mini-chart"><i /><i /><i /><i /><i /><i /><i /></div>
-          </div>
-        </div>
+        <img className="aog-project-image" src={aogProjectImage} alt="" />
       )}
       {variant === "robot" && (
         <div className="robot-scene">
@@ -348,14 +345,23 @@ function App() {
                       <h3>{project.name}</h3>
                       <p>{project.description}</p>
                       <div className="project-tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
-                      <div className="project-links"><span className="project-link-placeholder"><Github size={14} /> Repository URL to be added</span><span className="project-link-placeholder"><ArrowUpRight size={14} /> Demo link to be added</span></div>
+                      <div className="project-links">
+                        <span className="project-link-placeholder"><Github size={14} /> Repository URL to be added</span>
+                        {project.demoUrl ? (
+                          <a className="project-link" href={project.demoUrl} target="_blank" rel="noreferrer">
+                            <ArrowUpRight size={14} /> Open live app
+                          </a>
+                        ) : (
+                          <span className="project-link-placeholder"><ArrowUpRight size={14} /> Demo link to be added</span>
+                        )}
+                      </div>
                     </div>
                   </article>
                 </Reveal>
               );
             })}
           </div>
-          <Reveal className="projects-footnote"><span><Asterisk size={13} /> LINKS ARE PLACEHOLDERS UNTIL PROJECT URLS ARE PROVIDED.</span><a href="#contact">Have a project in mind? <ArrowRight size={15} /></a></Reveal>
+          <Reveal className="projects-footnote"><span><Asterisk size={13} /> SOME PROJECT LINKS ARE PLACEHOLDERS.</span><a href="#contact">Have a project in mind? <ArrowRight size={15} /></a></Reveal>
         </section>
 
         <section className="experience section-wrap" id="experience">
