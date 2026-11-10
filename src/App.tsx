@@ -11,6 +11,7 @@ import {
   Code2,
   Database,
   Github,
+  Gitlab,
   Globe2,
   Layers3,
   Linkedin,
@@ -25,6 +26,7 @@ import { motion, useReducedMotion } from "framer-motion";
 
 const profilePhoto = new URL("../Image/profile_photo.png", import.meta.url).href;
 const aogProjectImage = new URL("../Image/AOG_PICTURE.png", import.meta.url).href;
+const royalSquareProjectImage = new URL("../Image/royal square application.jpg", import.meta.url).href;
 const contactEmail = "tsakoubise@gmail.com";
 
 const navigation = [
@@ -73,6 +75,7 @@ const projects = [
     stack: ["Electron", "Firebase Auth", "PostgreSQL", "Role-based access"],
     visual: "aog",
     icon: Layers3,
+    repositoryUrl: null,
     demoUrl: "https://aogmanager.netlify.app/",
   },
   {
@@ -84,6 +87,7 @@ const projects = [
     stack: ["Python", "Google Calendar API", "OAuth 2.0"],
     visual: "api",
     icon: Braces,
+    repositoryUrl: null,
     demoUrl: null,
   },
   {
@@ -95,6 +99,7 @@ const projects = [
     stack: ["Kotlin", "Android", "Admin web app", "AfriHackathon"],
     visual: "finance",
     icon: Layers3,
+    repositoryUrl: "https://gitlab.com/botshelomogale02/royalsquarefinacial",
     demoUrl: null,
   },
 ];
@@ -182,12 +187,7 @@ function ProjectVisual({ variant, Icon }: { variant: string; Icon: typeof Code2 
         </div>
       )}
       {variant === "finance" && (
-        <div className="finance-dashboard">
-          <div className="finance-label">FINANCIAL OVERVIEW <span>LIVE</span></div>
-          <div className="finance-balance"><small>CLIENT NET POSITION</small><b>Portfolio summary</b></div>
-          <div className="finance-bars"><i /><i /><i /><i /><i /><i /><i /><i /></div>
-          <div className="finance-footer"><span>GOALS &amp; REMINDERS</span><span>↗ VIEW DASHBOARD</span></div>
-        </div>
+        <img className="royal-square-project-image" src={royalSquareProjectImage} alt="" />
       )}
     </div>
   );
@@ -346,7 +346,13 @@ function App() {
                       <p>{project.description}</p>
                       <div className="project-tags">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
                       <div className="project-links">
-                        <span className="project-link-placeholder"><Github size={14} /> Repository URL to be added</span>
+                        {project.repositoryUrl ? (
+                          <a className="project-link" href={project.repositoryUrl} target="_blank" rel="noreferrer">
+                            <Gitlab size={14} /> View GitLab repository
+                          </a>
+                        ) : (
+                          <span className="project-link-placeholder"><Github size={14} /> Repository URL to be added</span>
+                        )}
                         {project.demoUrl ? (
                           <a className="project-link" href={project.demoUrl} target="_blank" rel="noreferrer">
                             <ArrowUpRight size={14} /> Open live app
