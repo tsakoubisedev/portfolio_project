@@ -270,7 +270,7 @@ function App() {
             <motion.div className="hero-socials" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.72 }}>
               <span>FIND ME ON</span>
               <a className="social-link" href="https://linkedin.com/in/tsako-ubise" target="_blank" rel="noreferrer"><Linkedin size={16} /><span>LinkedIn</span></a>
-              <a className="social-link" href="https://github.com/woodcartoon" target="_blank" rel="noreferrer"><Github size={16} /><span>GitHub</span></a>
+              <a className="social-link" href="https://github.com/tsakoubisedev" target="_blank" rel="noreferrer"><Github size={16} /><span>GitHub</span></a>
             </motion.div>
           </div>
 
@@ -386,13 +386,14 @@ function App() {
             </div>
             <Reveal className="cert-card" delay={0.12}>
               <div className="cert-icon"><ShieldCheck size={22} strokeWidth={1.4} /></div>
-              <p className="eyebrow">HOW I WORK</p>
-              <h3>Build. Test.<br /><span>Improve.</span></h3>
-              <p className="cert-copy">I have experience with test-driven development, software deployment, and working collaboratively to solve problems.</p>
+              <p className="eyebrow">CERTIFICATIONS &amp; DEVELOPMENT</p>
+              <h3>Keep learning.<br /><span>Keep building.</span></h3>
+              <p className="cert-copy">Completed training and areas I continue to explore.</p>
               <div className="cert-divider" />
               <div className="cert-list">
-                <div><span>01</span><p><b>Interests</b><small>Open source · software architecture</small></p><ArrowUpRight size={14} /></div>
-                <div><span>02</span><p><b>Community</b><small>Open-source contributions · tech communities</small></p><ArrowUpRight size={14} /></div>
+                <div><span>01</span><p><b>Introduction to Cybersecurity</b><small>Cisco Networking Academy · Completed</small></p><ShieldCheck size={14} /></div>
+                <div><span>02</span><p><b>Interests</b><small>Open source · software architecture</small></p><ArrowUpRight size={14} /></div>
+                <div><span>03</span><p><b>Community</b><small>Open-source contributions · tech communities</small></p><ArrowUpRight size={14} /></div>
               </div>
               <a className="cert-link" href="#contact">Let&apos;s build something together <ArrowRight size={15} /></a>
             </Reveal>
@@ -408,7 +409,7 @@ function App() {
               <a className="phone-link" href="tel:+27787680454">+27 78 768 0454</a>
               <div className="contact-socials">
                 <a href="https://linkedin.com/in/tsako-ubise" target="_blank" rel="noreferrer"><Linkedin size={17} /> LinkedIn <ArrowUpRight size={13} /></a>
-                <a href="https://github.com/woodcartoon" target="_blank" rel="noreferrer"><Github size={17} /> GitHub <ArrowUpRight size={13} /></a>
+                <a href="https://github.com/tsakoubisedev" target="_blank" rel="noreferrer"><Github size={17} /> GitHub <ArrowUpRight size={13} /></a>
               </div>
               <div className="contact-note"><span className="availability-dot" /> OPEN TO MEANINGFUL COLLABORATION</div>
             </Reveal>
