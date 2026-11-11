@@ -277,7 +277,7 @@ function App() {
             </a>
           ))}
           <a className="nav-cta" href="#contact" onClick={() => setMenuOpen(false)}>
-            Let&apos;s talk <ArrowUpRight size={14} />
+            <span>Let&apos;s talk</span> <ArrowUpRight size={14} />
           </a>
         </nav>
         <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
@@ -299,7 +299,7 @@ function App() {
               I&apos;m a Software Engineer and final-year AI Software Engineering student at WeThinkCode_, also enrolled in the ALX Africa Data Analytics programme. I bring 2+ years of hands-on full-stack and mobile development experience, strong Python and Java skills, and experience with Docker, GitLab CI/CD, and software deployment.
             </p>
             <div className="hero-actions">
-              <a className="button button-accent" href="#projects">View my work <ArrowDownRight size={17} /></a>
+              <a className="button button-accent button-view-work" href="#projects"><span>View my work</span> <ArrowDownRight size={17} /></a>
               <a className="button button-outline" href="/Tsako-Ubise-CV.pdf" download="Tsako-Ubise-CV.pdf">Download CV <ArrowDown size={16} /></a>
             </div>
             <div className="hero-socials">
