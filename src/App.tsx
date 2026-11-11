@@ -245,6 +245,14 @@ function App() {
     setFormSent(true);
   }
 
+  function handleNavigationHover(href: string) {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    document.querySelector<HTMLElement>(href)?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block: "start",
+    });
+  }
+
   return (
     <div className="site-shell min-h-screen bg-ink text-white">
       <header className="site-header">
@@ -260,6 +268,7 @@ function App() {
               className={activeSection === href.slice(1) ? "active" : undefined}
               aria-current={activeSection === href.slice(1) ? "location" : undefined}
               onClick={() => setMenuOpen(false)}
+              onMouseEnter={() => handleNavigationHover(href)}
             >
               {activeSection === href.slice(1) && (
                 <span className="nav-active-indicator" aria-hidden="true" />
