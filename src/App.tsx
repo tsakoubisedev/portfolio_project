@@ -70,7 +70,7 @@ const projects = [
     name: "AOG Manager",
     category: "ELECTRON · CHURCH MANAGEMENT",
     description:
-      "A church management desktop app for members, serving teams, and attendance, with search, team filtering, and role-based multi-organization access.",
+      "Built and deployed an Electron app for church member records, serving teams, and attendance, using GitHub Copilot during development. Designed the relational PostgreSQL schema with duplicate-safe attendance keys, then implemented Firebase-authenticated multi-organization access, ADMIN and TEAM_LEAD roles, member search, team filtering, and retry-safe transactional attendance recording.",
     stack: ["Electron", "Firebase Auth", "PostgreSQL", "Role-based access"],
     visual: "aog",
     icon: Layers3,
@@ -82,7 +82,7 @@ const projects = [
     name: "Google API Calendar",
     category: "PYTHON · GOOGLE CALENDAR API",
     description:
-      "An automated booking pipeline for peer-to-peer mentoring sessions, with OAuth 2.0 authorization and real-time checks to prevent double bookings.",
+      "Co-engineered an automated booking pipeline for peer-to-peer mentoring with the Google Calendar API. Implemented OAuth 2.0 authentication and authorization, real-time conflict checks to prevent double bookings, event deletion and CSV-based event matching, plus NumPy-powered event display in the CLI.",
     stack: ["Python", "Google Calendar API", "OAuth 2.0"],
     visual: "api",
     icon: Braces,
@@ -94,7 +94,7 @@ const projects = [
     name: "Royal Square Financial App",
     category: "AFRIHACKATHON · FINTECH",
     description:
-      "A team-built financial services experience with a Kotlin Android client, companion admin web app, real-time financial overview, and automated reminders.",
+      "Designed the real-time client dashboard for financial position and net worth, and contributed to goal tracking and automated reminders for tasks, documents, renewals, and reviews. Built with a team as a Kotlin Android client and companion admin web app for a brokerage and financial services provider.",
     stack: ["Kotlin", "Android", "Admin web app", "AfriHackathon"],
     visual: "finance",
     icon: Layers3,
