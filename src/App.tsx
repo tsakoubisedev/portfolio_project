@@ -290,7 +290,7 @@ function App() {
               I&apos;m a Software Engineer and final-year AI Software Engineering student at WeThinkCode_, also enrolled in the ALX Africa Data Analytics programme. I bring 2+ years of hands-on full-stack and mobile development experience, strong Python and Java skills, and experience with Docker, GitLab CI/CD, and software deployment.
             </p>
             <div className="hero-actions">
-              <a className="button button-lime" href="#projects">View my work <ArrowDownRight size={17} /></a>
+              <a className="button button-accent" href="#projects">View my work <ArrowDownRight size={17} /></a>
               <a className="button button-outline" href="/Tsako-Ubise-CV.pdf" download="Tsako-Ubise-CV.pdf">Download CV <ArrowDown size={16} /></a>
             </div>
             <div className="hero-socials">
@@ -464,7 +464,7 @@ function App() {
                 </div>
                 <label>Subject<input name="subject" type="text" placeholder="What would you like to discuss?" required /></label>
                 <label>Your message<textarea name="message" rows={4} placeholder="Tell me a little about it..." required /></label>
-                <button className="button button-lime form-submit" type="submit">{formSent ? <>Email draft opened <Check size={16} /></> : <>Let&apos;s connect <ArrowUpRight size={16} /></>}</button>
+                <button className="button button-accent form-submit" type="submit">{formSent ? <>Email draft opened <Check size={16} /></> : <>Let&apos;s connect <ArrowUpRight size={16} /></>}</button>
                 <p className="form-note">Your email app will open with your message ready to send.</p>
               </form>
             </Reveal>
