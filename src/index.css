@@ -35,7 +35,7 @@ button { color: inherit; }
 
 .site-shell { position: relative; overflow: clip; background: radial-gradient(circle at top, rgba(79,131,255,.08), transparent 30%), var(--ink); }
 .section-wrap { width: min(1120px, calc(100% - 88px)); margin-inline: auto; }
-.site-header { position: sticky; z-index: 20; top: 0; display: flex; height: 75px; align-items: center; justify-content: space-between; padding-inline: max(calc((100vw - 1120px) / 2), 44px); border-bottom: 1px solid rgba(255,255,255,.065); background: rgba(8,8,8,.82); backdrop-filter: blur(18px); }
+.site-header { position: sticky; z-index: 20; top: 0; display: flex; height: 75px; align-items: center; justify-content: space-between; padding-inline: max(calc((100vw - 1120px) / 2), 44px); border-bottom: 1px solid rgba(255,255,255,.09); background: linear-gradient(110deg, rgba(15,18,27,.56), rgba(8,8,8,.36) 48%, rgba(13,18,29,.54)); -webkit-backdrop-filter: blur(18px) saturate(1.45); backdrop-filter: blur(18px) saturate(1.45); box-shadow: 0 8px 28px rgba(0,0,0,.12); }
 section[id] { scroll-margin-top: 90px; }
 .wordmark { display: inline-flex; align-items: center; gap: 10px; }
 .wordmark-icon { display: grid; width: 31px; height: 31px; place-items: center; border: 1px solid rgba(79,131,255,.4); border-radius: var(--radius-control); color: var(--white); font-size: 15px; font-weight: 800; letter-spacing: -2px; transition: transform .35s cubic-bezier(.2,.8,.2,1); }
