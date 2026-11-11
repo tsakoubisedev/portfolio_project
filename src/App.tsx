@@ -61,7 +61,7 @@ const skillGroups = [
     number: "04",
     title: "DevOps & workflow",
     icon: Terminal,
-    skills: ["Docker", "GitLab CI/CD", "Git", "Linux CLI", "Android Studio"],
+    skills: ["Docker", "DevSecOps", "GitLab CI/CD", "Git", "Linux CLI", "Android Studio"],
   },
 ];
 
