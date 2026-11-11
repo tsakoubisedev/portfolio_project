@@ -22,7 +22,6 @@ import {
   Terminal,
   X,
 } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
 
 const profilePhoto = new URL("../Image/profile_photo.png", import.meta.url).href;
 const aogProjectImage = new URL("../Image/AOG_PICTURE.png", import.meta.url).href;
@@ -119,17 +118,13 @@ function Reveal({
   className?: string;
   delay?: number;
 }) {
-  const reduceMotion = useReducedMotion();
   return (
-    <motion.div
-      className={className}
-      initial={reduceMotion ? false : { opacity: 0, y: 22 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.14 }}
-      transition={{ duration: reduceMotion ? 0 : 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+    <div
+      className={`reveal ${className}`}
+      style={{ transitionDelay: `${delay}s` }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -212,7 +207,28 @@ function App() {
       { rootMargin: "-20% 0px -65% 0px", threshold: [0, 0.1, 0.25, 0.5] },
     );
     sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let revealObserver: IntersectionObserver | undefined;
+    if (!reducedMotion && "IntersectionObserver" in window) {
+      revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            entry.target.classList.toggle("is-in-view", entry.isIntersecting);
+            if (entry.isIntersecting) entry.target.classList.add("is-visible");
+          });
+        },
+        { threshold: 0.14 },
+      );
+      document.documentElement.classList.add("reveal-ready");
+      document.querySelectorAll(".reveal").forEach((element) => revealObserver?.observe(element));
+    }
+
+    return () => {
+      observer.disconnect();
+      revealObserver?.disconnect();
+      document.documentElement.classList.remove("reveal-ready");
+    };
   }, []);
 
   function handleContactSubmit(event: FormEvent<HTMLFormElement>) {
@@ -238,9 +254,22 @@ function App() {
         </a>
         <nav className={`desktop-nav ${menuOpen ? "nav-open" : ""}`} aria-label="Main navigation">
           {navigation.map(([label, href]) => (
-            <a key={href} href={href} className={activeSection === href.slice(1) ? "active" : undefined} aria-current={activeSection === href.slice(1) ? "location" : undefined} onClick={() => setMenuOpen(false)}>{label}</a>
+            <a
+              key={href}
+              href={href}
+              className={activeSection === href.slice(1) ? "active" : undefined}
+              aria-current={activeSection === href.slice(1) ? "location" : undefined}
+              onClick={() => setMenuOpen(false)}
+            >
+              {activeSection === href.slice(1) && (
+                <span className="nav-active-indicator" aria-hidden="true" />
+              )}
+              <span>{label}</span>
+            </a>
           ))}
-          <a className="nav-cta" href="#contact" onClick={() => setMenuOpen(false)}>Let&apos;s talk <ArrowUpRight size={14} /></a>
+          <a className="nav-cta" href="#contact" onClick={() => setMenuOpen(false)}>
+            Let&apos;s talk <ArrowUpRight size={14} />
+          </a>
         </nav>
         <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
           {menuOpen ? <X size={21} /> : <Menu size={21} />}
@@ -251,30 +280,30 @@ function App() {
         <section className="hero section-wrap" id="home">
           <div className="hero-grid-pattern" aria-hidden="true" />
           <div className="hero-copy">
-            <motion.p className="eyebrow hero-eyebrow" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }}>
+            <p className="eyebrow hero-eyebrow">
               <span className="availability-dot" /> TSAKO UBISE <span className="hero-eyebrow-divider">/</span> SOFTWARE ENGINEER
-            </motion.p>
-            <motion.h1 initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, delay: 0.2 }}>
+            </p>
+            <h1>
               Building digital<br />solutions. <span>Engineering</span><br /><span className="hero-tomorrow">tomorrow.</span>
-            </motion.h1>
-            <motion.p className="hero-intro" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.42 }}>
+            </h1>
+            <p className="hero-intro">
               I&apos;m a Software Engineer and final-year AI Software Engineering student at WeThinkCode_, also enrolled in the ALX Africa Data Analytics programme. I bring 2+ years of hands-on full-stack and mobile development experience, strong Python and Java skills, and experience with Docker, GitLab CI/CD, and software deployment.
-            </motion.p>
-            <motion.div className="hero-actions" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>
+            </p>
+            <div className="hero-actions">
               <a className="button button-lime" href="#projects">View my work <ArrowDownRight size={17} /></a>
               <a className="button button-outline" href="/Tsako-Ubise-CV.pdf" download="Tsako-Ubise-CV.pdf">Download CV <ArrowDown size={16} /></a>
-            </motion.div>
-            <motion.div className="hero-socials" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.72 }}>
+            </div>
+            <div className="hero-socials">
               <span>FIND ME ON</span>
               <a className="social-link" href="https://linkedin.com/in/tsako-ubise" target="_blank" rel="noreferrer"><Linkedin size={16} /><span>LinkedIn</span></a>
               <a className="social-link" href="https://github.com/tsakoubisedev" target="_blank" rel="noreferrer"><Github size={16} /><span>GitHub</span></a>
-            </motion.div>
+            </div>
           </div>
 
-          <motion.div className="hero-art" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.35 }}>
+          <div className="hero-art">
             <div className="art-coordinate">FIG. 01 <span>— DIGITAL CRAFT</span></div>
             <div className="portrait-frame">
-              <img className="profile-photo" src={profilePhoto} alt="Tsako Ubise" />
+              <img className="profile-photo" src={profilePhoto} alt="Tsako Ubise" loading="eager" fetchPriority="high" />
               <div className="portrait-grid" />
               <div className="portrait-glow" />
               <div className="portrait-orbit orbit-a" /><div className="portrait-orbit orbit-b" />
@@ -283,8 +312,10 @@ function App() {
               <div className="portrait-crosshair crosshair-one">+</div><div className="portrait-crosshair crosshair-two">+</div>
             </div>
             <div className="art-caption"><span>SOFTWARE ENGINEER</span><span>CREATING WITH INTENTION <Asterisk size={12} /></span></div>
-            <div className="floating-tag"><span className="tag-pulse" /> FULL-STACK &amp;<br />MOBILE DEVELOPMENT</div>
-          </motion.div>
+            <div className="floating-tag">
+              <span className="tag-pulse" /> FULL-STACK &amp;<br />MOBILE DEVELOPMENT
+            </div>
+          </div>
           <a className="scroll-cue" href="#about"><span>SCROLL TO EXPLORE</span><ChevronDown size={15} /></a>
           <span className="hero-index">01 / 05</span>
         </section>
