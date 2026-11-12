@@ -261,6 +261,8 @@ html.reveal-ready .reveal.is-visible { opacity: 1; transform: translate3d(0,0,0)
   background: #191c24;
   isolation: isolate;
 }
+.project-image-link { display: block; color: inherit; }
+.project-image-link:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
 .visual-topline { position: absolute; z-index: 2; top: 12px; right: 14px; left: 14px; display: flex; justify-content: space-between; }
 .visual-mark { display: grid; width: 27px; height: 27px; place-items: center; border: 1px solid rgba(79,131,255,.38); border-radius: var(--radius-control); color: var(--accent); background: rgba(8,8,8,.55); }
 .visual-dots { display: flex; gap: 4px; align-items: center; }

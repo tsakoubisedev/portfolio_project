@@ -376,10 +376,24 @@ function App() {
           <div className="projects-grid">
             {projects.map((project, i) => {
               const Icon = project.icon;
+              const primaryUrl = project.demoUrl ?? project.repositoryUrl;
+              const primaryLinkLabel = project.demoUrl ? "live app" : "repository";
               return (
                 <Reveal key={project.name} delay={(i % 2) * 0.1}>
                   <article className="project-card">
-                    <ProjectVisual variant={project.visual} Icon={Icon} />
+                    {primaryUrl ? (
+                      <a
+                        className="project-image-link"
+                        href={primaryUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Open ${project.name} ${primaryLinkLabel}`}
+                      >
+                        <ProjectVisual variant={project.visual} Icon={Icon} />
+                      </a>
+                    ) : (
+                      <ProjectVisual variant={project.visual} Icon={Icon} />
+                    )}
                     <div className="project-info">
                       <div className="project-meta"><span>{project.category}</span><span>{project.index}</span></div>
                       <h3>{project.name}</h3>
