@@ -260,6 +260,7 @@ html.reveal-ready .reveal.is-visible { opacity: 1; transform: translate3d(0,0,0)
   overflow: hidden;
   background: #191c24;
   isolation: isolate;
+
 }
 .project-image-link { display: block; color: inherit; }
 .project-image-link:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
